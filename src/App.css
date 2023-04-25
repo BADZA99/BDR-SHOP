@@ -18,3 +18,8 @@ body{
 .cursor-pointer{
     cursor: pointer;
 }
+
+.activeLink{
+    font-weight: 700;
+    color:darkblue ;
+}

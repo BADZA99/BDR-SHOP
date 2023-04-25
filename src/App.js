@@ -1,4 +1,4 @@
-import { Fragment,useState } from 'react';
+import { Fragment,useState,useEffect} from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import SideMenu from './components/SideMenu';
@@ -7,18 +7,36 @@ import {list} from './data';
 // eslint-disable-next-line
 function App() {
     const [Category, setCategory] = useState(0);
+    const [isFiltering, setFiltering] = useState(false);
+    const [Filtered, setFiltered] = useState(false);
     const loadCategory = (i) => {
       setCategory(i);
     };
+
+    const filterResult= (input) =>{
+      let fullList=list.flat()
+      // console.log(fullList);
+      let results=fullList.filter(item =>{
+        const name=item.name.toLowerCase();
+        const term=input.toLowerCase();
+        return name.indexOf(term) > -1
+      });
+      setFiltered(results);
+    }
+
+    useEffect (()=>{
+      console.log(isFiltering);
+    })
+
   return (
     <Fragment>
-      <Navbar />
+      <Navbar filter={filterResult} setFiltering={setFiltering} />
       <div className="container mt-5">
         <div className="row">
          <SideMenu loadCategory={loadCategory}/>
           <div className="col-sm">
             <div className="row">
-              <List data={list} category={Category}/>
+              <List data={ isFiltering ? Filtered : list[Category]} category={Category}/>
             </div>
           </div>
         </div>

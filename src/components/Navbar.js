@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Navbar() {
+export default function Navbar({filter,setFiltering}) {
     return (
         <nav className="navbar navbar-light navbar-expand-lg bg-info justify-content-between fixed ">
           <a className="navbar-brand text-white text-uppercase font-weight-bold">
@@ -12,6 +12,11 @@ export default function Navbar() {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              onChange={(e)=>{
+                setFiltering(e.target.value.length >0);
+                filter(e.target.value);
+              }
+            }
             />
           </form>
           <div className="menu-right">

@@ -2,8 +2,8 @@ import React from 'react'
 import Card from './Card'
 
 export default function List(props) {
-    const {data,category}=props;
-    const article=data[category];
+    const {data}=props;
+
 
     // console.log(article);
   return (
@@ -11,7 +11,7 @@ export default function List(props) {
       <div className="col-sm">
         <div className="row">
              {
-               article.map(game => <Card key={game.ref} game={game}/>) 
+               data.map(item => <Card key={item.ref} item={item}/>) 
 
             } 
         </div>
