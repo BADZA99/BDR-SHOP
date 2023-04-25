@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import { Fragment,useState } from 'react';
 import './App.css';
-
+import Navbar from './components/Navbar';
+import SideMenu from './components/SideMenu';
+import List from './components/List';
+import {list} from './data';
+// eslint-disable-next-line
 function App() {
+    const [Category, setCategory] = useState(0);
+    const loadCategory = (i) => {
+      setCategory(i);
+    };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Navbar />
+      <div className="container mt-5">
+        <div className="row">
+         <SideMenu loadCategory={loadCategory}/>
+          <div className="col-sm">
+            <div className="row">
+              <List data={list} category={Category}/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Fragment>
   );
 }
 
