@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 export default function Navbar({filter,setFiltering,count}) {
     return (
       <nav className="navbar navbar-light navbar-expand-lg bg-info justify-content-between fixed ">
-        <a className="navbar-brand text-white text-uppercase font-weight-bold">
-          BDR SHOP
-        </a>
+        <Link to={"/"}>
+          <a className="navbar-brand text-white text-uppercase font-weight-bold" href='#'>
+            BDR SHOP
+          </a>
+        </Link>
         <form className="form-inline">
           <input
             className="form-control mr-sm-2"
@@ -19,7 +22,7 @@ export default function Navbar({filter,setFiltering,count}) {
           />
         </form>
         <div className="menu-right">
-          <i class="fa-solid fa-bag-shopping fa-2xl"></i>
+          <Link to={"/cart"} className='panier'><i class="fa-solid fa-bag-shopping fa-2xl"></i></Link>
           <span class="badge badge-danger Badge">{count}</span>
         </div>
       </nav>
