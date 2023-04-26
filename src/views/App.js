@@ -5,9 +5,9 @@ import Navbar from "../components/Navbar";
 // import List from "../components/List";
 import {  Route, Routes } from "react-router-dom";
 import { list } from "../data";
-import Cart from "./Cart";
+import CartPage from "./Cart";
 import Home from "./Home";
-// eslint-disable-next-line
+
 function App() {
   const [Category, setCategory] = useState(0);
   const [isFiltering, setFiltering] = useState(false);
@@ -29,17 +29,20 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(isFiltering);
+    // console.log(isFiltering);
   });
 
   return (
     <Fragment>
-        <Navbar filter={filterResult} setFiltering={setFiltering} count={count} />
-        {/* Routes */}
-       
-         
-          <Routes>
-            <Route exact path="/" element={<Home
+      <Navbar filter={filterResult} setFiltering={setFiltering} count={count} />
+      {/* Routes */}
+
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Home
               Category={Category}
               loadCategory={loadCategory}
               addToCart={setcount}
@@ -48,10 +51,11 @@ function App() {
               Filtered={Filtered}
               count={count}
               // setcount={setcount}
-            />} />
-            <Route path="/cart" element={<Cart/>} />
-          </Routes>
-        
+            />
+          }
+        />
+        <Route path="/cart" element={<CartPage />} />
+      </Routes>
     </Fragment>
   );
 }
