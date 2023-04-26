@@ -2,9 +2,9 @@ import React from 'react'
 import Modal from './Modal';
 
 export default function Card(props) {
-    const {item}=props;
+    const {item,addToCart,count}=props;
     return (
-      <div className="col-sm-4">
+      <div className="col-sm-4 pb-2">
         <div className="card taillecart">
           <img
             className="card-img-top"
@@ -33,7 +33,11 @@ export default function Card(props) {
             </div>
           </div>
         </div>
-        <Modal item={item}/>
+        <Modal
+          item={item}
+          addToCart={addToCart}
+          count={count}
+        />
       </div>
     );
 }

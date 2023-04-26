@@ -23,3 +23,10 @@ body{
     font-weight: 700;
     color:darkblue ;
 }
+
+.Badge{
+    position: absolute;
+    font-size: 14px;
+    right: -0rem;
+    border-radius: 50%;
+}
