@@ -59,3 +59,20 @@ a{
     pointer-events: none;
    background: transparent;
 }
+
+.jumbotron{
+    background-color: #f5f5f5;
+}
+
+#truk{
+    width: 200px;
+    display: block;
+    position: absolute;
+    top:50%;
+    left: 20%;
+    margin-top: -61px;
+    margin-left: -100px;
+}
+
+/* animate svg */
+

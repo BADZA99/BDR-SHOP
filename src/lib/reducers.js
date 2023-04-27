@@ -38,6 +38,9 @@ export default function onlineStoreApp(state = initialState, action) {
         case actions.SAVE_CART:
             saveLocalStorage(action.payload.items);
             return state
+        case actions.RESET_CART:
+            saveLocalStorage([])
+            return Object.assign({}, state, { items: [] });
 
 
         default:  return state;

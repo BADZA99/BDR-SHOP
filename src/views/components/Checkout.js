@@ -86,7 +86,7 @@ export default function Checkout() {
           <div className="form-group">
             <label for="exampleInputPassword1">Adress</label>
             <input
-              type="password"
+              type="text"
               className="form-control col-md-5"
               id="exampleInputPassword1"
               placeholder="Adress"
