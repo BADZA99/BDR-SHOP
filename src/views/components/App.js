@@ -30,7 +30,7 @@ function App(props) {
   };
 
   useEffect(() => {
-    console.log(isFiltering);
+    // console.log(isFiltering);
   });
 
  

@@ -11,6 +11,7 @@ export const actions={
 // Actions creators
 const uid= ()=> Math.random().toString(34).slice(2)
 export function addToCart(item,quantity){
+    console.log(quantity);
     return {
         type: actions.ADD_TO_CART,
         playload: {
@@ -21,13 +22,10 @@ export function addToCart(item,quantity){
     }
 }
 
-export function updateCart(item,quantity){
+export function updateCart(id,quantity){
     return {
         type: actions.UPDATE_CART,
-        playload: {
-            item:item,
-            quantity
-        }
+        playload: {id:id,quantity:quantity}
     }
 }
 
