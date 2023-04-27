@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+// import usedispatch
+import { useSelector } from "react-redux";
 
-export default function Navbar({filter,setFiltering,count}) {
+export default function Navbar({filter,setFiltering}) {
+  const items=useSelector(state=>state.items)
     return (
       <nav className="navbar navbar-light navbar-expand-lg bg-info justify-content-between fixed ">
         <Link to={"/"}>
@@ -23,7 +26,7 @@ export default function Navbar({filter,setFiltering,count}) {
         </form>
         <div className="menu-right">
           <Link to={"/cart"} className='panier'><i class="fa-solid fa-bag-shopping fa-2xl"></i></Link>
-          <span class="badge badge-danger Badge">{count}</span>
+          <span class="badge badge-danger Badge">{items.length > 0 && items.length}</span>
         </div>
       </nav>
     );

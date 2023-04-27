@@ -1,8 +1,11 @@
 import React from 'react'
 import Modal from './Modal';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../lib/actions";
+
 
 export default function Card(props) {
-    const {item,addToCart,count}=props;
+    const {item,count}=props;
     return (
       <div className="col-sm-4 pb-2">
         <div className="card taillecart">
@@ -35,7 +38,6 @@ export default function Card(props) {
         </div>
         <Modal
           item={item}
-          addToCart={addToCart}
           count={count}
         />
       </div>

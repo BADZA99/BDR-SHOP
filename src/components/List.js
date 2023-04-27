@@ -1,8 +1,10 @@
 import React from 'react'
 import Card from './Card'
+import { useDispatch } from "react-redux";
+import { addToCart } from "../lib/actions";
 
 export default function List(props) {
-    const {data,category,addToCart,count}=props;
+    const {data,category,updateCart}=props;
 
 
     // console.log(article);
@@ -14,8 +16,9 @@ export default function List(props) {
             <Card
               key={item.ref}
               item={item}
-              addToCart={addToCart}
-              count={count}
+              // addToCart={addToCart}
+              updateCart={updateCart}
+              // count={count}
             />
           ))}
         </div>

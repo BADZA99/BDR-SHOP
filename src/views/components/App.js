@@ -1,14 +1,15 @@
 import { Fragment, useState, useEffect } from "react";
-import "../App.css";
-import Navbar from "../components/Navbar";
+import "../../App.css";
+import Navbar from "../../components/Navbar";
 // import SideMenu from "../components/SideMenu";
 // import List from "../components/List";
-import {  Route, Routes } from "react-router-dom";
-import { list } from "../data";
+import { Route, Routes } from "react-router-dom";
+import { list } from "../../data";
 import CartPage from "./Cart";
 import Home from "./Home";
 
-function App() {
+function App(props) {
+  const {items,onUpdateToCart}=props
   const [Category, setCategory] = useState(0);
   const [isFiltering, setFiltering] = useState(false);
   const [Filtered, setFiltered] = useState(false);
@@ -29,8 +30,14 @@ function App() {
   };
 
   useEffect(() => {
-    // console.log(isFiltering);
+    console.log(isFiltering);
   });
+
+ 
+
+  const update = (item,quantity) =>{
+    // onUpdateToCart(item,quantity)
+  }
 
   return (
     <Fragment>
@@ -43,13 +50,13 @@ function App() {
           path="/"
           element={
             <Home
-              Category={Category}
+              category={Category}
               loadCategory={loadCategory}
-              addToCart={setcount}
+              updateCart={update}
               list={list}
               isFiltering={isFiltering}
-              Filtered={Filtered}
-              count={count}
+              filtered={Filtered}
+              
               // setcount={setcount}
             />
           }
