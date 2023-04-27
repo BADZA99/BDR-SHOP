@@ -6,18 +6,6 @@ import { list } from '../../data';
 
 export default function Home(props) {
     const {isFiltering,filtered,list,category,loadCategory,updateCart}=props
-    // const [Category,setCategory] = useState(0);
-    // const [isFiltering,] = useState(false);
-    // const [Filtered] = useState(false);
-    // const [count, setcount] = useState(1);
-    // const addToCart = (i) => {
-    //     setcount(i);
-    // };
-
-
-    // const loadCategory = (i) => {
-    //     setCategory(i);
-    // };
   return (
     <div className="container mt-5">
       <div className="row">

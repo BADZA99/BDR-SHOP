@@ -1,11 +1,16 @@
-import { Fragment } from "react"
+import { Fragment,useEffect } from "react"
 import React from 'react'
 // import link
 // import { Link } from "react-router-dom";
+import { useDispatch,useSelector } from "react-redux";
 
 
 
 const Table =()=>{
+    const items = useSelector((state) => state.items);
+    useEffect(() => {
+    console.log(`You have ${items.length}`);
+    });
     return (
         <table>
             <tr>
@@ -15,42 +20,50 @@ const Table =()=>{
                 <th width="150">quantity</th>
                 <th width="200">total</th>
             </tr>
-            <Row/>
-            <Row/>
+            {
+                items.map((item)=>{
+                    return <Row item={item}/>
+                }
+                )
+            }
+           
         </table>
     )
 }
 
-const Row =()=>{
+const Row =(props)=>{
+
+    const {quantity,details}=props.item
+    console.log(props);
+
     return (
-        <tr>
-            <td>
-                <img src="" alt="produit" width="70" height="70"/>
-            </td>
-            <td>
-                <p>ref</p>
-            </td>
-            <td>
-                <p>price</p>
-            </td>
-            <td>
-                <div className="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" className="btn btn-secondary">-</button>
-                    <span className="btn btn-light">1</span>
-                    <button type="button" className="btn btn-secondary">+</button>
-                </div>
-            </td>
-            <td>
-                2,99
-            </td>
-            <button
-                type="button"
-                className="btn btn-danger remove" 
-            >
-                X
+      <tr>
+        <td>
+          <img src={details.image} alt={details.name} width="70" height="70" />
+        </td>
+        <td>
+          <p>{details.ref}</p>
+        </td>
+        <td>
+          <p>{details.price}€</p>
+        </td>
+        <td>
+          <div className="btn-group" role="group" aria-label="Basic example">
+            <button type="button" className="btn btn-secondary">
+              -
             </button>
-        </tr>
-    )
+            <span className="btn btn-light">{quantity}</span>
+            <button type="button" className="btn btn-secondary">
+              +
+            </button>
+          </div>
+        </td>
+        <td>{details.price*quantity}€</td>
+        <button type="button" className="btn btn-danger remove">
+          X
+        </button>
+      </tr>
+    );
 }
 
 export default function CartPage() {
