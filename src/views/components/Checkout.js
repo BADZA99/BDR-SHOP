@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserProfileContext } from "../../lib/UserProfileContext";
-// import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 
 export default function Checkout() {
@@ -125,13 +125,12 @@ export default function Checkout() {
               </div>
             </div>
           </form>
-          <button
-            type="submit"
-            className="btn btn-danger btn-lg btn-block mt-2"
-            // disabled={!isValid && true}
+          <Link
+            to={"/confirm"}
+            className={` ${!isValid && 'disabled'}btn btn-danger btn-lg btn-block mt-2 text-center`}
           >
             Checkout
-          </button>
+          </Link>
         </form>
       </div>
     );

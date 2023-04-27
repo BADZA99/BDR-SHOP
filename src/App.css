@@ -54,3 +54,8 @@ a{
 .flex{
     display: flex;
 }
+
+.disabled{
+    pointer-events: none;
+   background: transparent;
+}

@@ -6,6 +6,7 @@ import { list } from "../../data";
 import CartPage from "./Cart";
 import Home from "./Home";
 import Checkout from "./Checkout";
+import Confirm from "./Confirm";
 import UserProfileContextProvider from "../../lib/UserProfileContext"
 
 function App(props) {
@@ -60,7 +61,7 @@ function App(props) {
           />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
-
+          <Route path="/confirm" element={<Confirm />} />
         </Routes>
       </UserProfileContextProvider>
     </Fragment>
