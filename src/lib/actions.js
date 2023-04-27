@@ -31,11 +31,11 @@ export function updateCart(item,quantity){
     }
 }
 
-export function removeFromCart(item){
+export function removeFromCart(id){
     return {
         type: actions.REMOVE_FROM_CART,
         playload: {
-            item
+            id
         }
     }
 }

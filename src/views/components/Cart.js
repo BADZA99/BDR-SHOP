@@ -1,7 +1,7 @@
-import { Fragment,useEffect } from "react"
+import { Fragment,useEffect,useState } from "react"
 import React from 'react'
-// import link
-// import { Link } from "react-router-dom";
+// import updatecart
+import { removeFromCart, updateCart } from "../../lib/actions";
 import { useDispatch,useSelector } from "react-redux";
 
 
@@ -15,7 +15,7 @@ const Table =()=>{
         <table>
             <tr>
                 <th width="200">Product</th>
-                <th width="90">Reference</th>
+                <th width="80">Reference</th>
                 <th width="150">price</th>
                 <th width="150">quantity</th>
                 <th width="200">total</th>
@@ -33,34 +33,56 @@ const Table =()=>{
 
 const Row =(props)=>{
 
-    const {quantity,details}=props.item
-    console.log(props);
+    const {id,quantity,details}=props.item
+    const produit=details;
+    const [qty,setqty]=useState(quantity);
+    const dispatch = useDispatch();
+
+      const update = (item, quantity) => {
+        dispatch(updateCart(item, quantity));
+      };
+
+      const remove = (id) =>{
+        dispatch(removeFromCart(id));
+      }
+
+   
 
     return (
       <tr>
         <td>
-          <img src={details.image} alt={details.name} width="70" height="70" />
+          <img src={produit.image} alt={produit.name} width="70" height="70" />
         </td>
         <td>
-          <p>{details.ref}</p>
+          <p>{produit.ref}</p>
         </td>
         <td>
-          <p>{details.price}€</p>
+          <p>{produit.price}€</p>
         </td>
         <td>
           <div className="btn-group" role="group" aria-label="Basic example">
-            <button type="button" className="btn btn-secondary">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => (qty > 0 ? setqty(qty - 1) && update(produit,qty) : 1)}
+            >
               -
             </button>
-            <span className="btn btn-light">{quantity}</span>
-            <button type="button" className="btn btn-secondary">
+            <span className="btn btn-light">{qty}</span>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => setqty(qty + 1) && update(produit,qty)}
+            >
               +
             </button>
           </div>
         </td>
-        <td>{details.price*quantity}€</td>
-        <button type="button" className="btn btn-danger remove">
-          X
+        <td>{produit.price * qty}€</td>
+        <button type="button" className="btn btn-danger " 
+        onClick={()=> remove(id) && console.log("hello")}
+        >
+          x
         </button>
       </tr>
     );
