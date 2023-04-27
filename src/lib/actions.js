@@ -3,6 +3,7 @@ export const actions={
     ADD_TO_CART:'ADD_TO_CART',
     UPDATE_CART: 'UPDATE_CART',
     REMOVE_FROM_CART: 'REMOVE_FROM_CART',
+    SAVE_CART:"SAVE_CART"
 }
 
 // export actions
@@ -14,7 +15,7 @@ export function addToCart(item,quantity){
     console.log(quantity);
     return {
         type: actions.ADD_TO_CART,
-        playload: {
+        payload: {
             id: uid(),
             quantity: quantity,
             details:item
@@ -25,15 +26,24 @@ export function addToCart(item,quantity){
 export function updateCart(id,quantity){
     return {
         type: actions.UPDATE_CART,
-        playload: {id:id,quantity:quantity}
+        payload: {id:id,quantity:quantity}
     }
 }
 
 export function removeFromCart(id){
     return {
         type: actions.REMOVE_FROM_CART,
-        playload: {
+        payload: {
             id
+        }
+    }
+}
+
+export function saveCart(items){
+    return {
+        type: actions.SAVE_CART,
+        payload: {
+            items : items
         }
     }
 }

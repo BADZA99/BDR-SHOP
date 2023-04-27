@@ -9,7 +9,7 @@ import CartPage from "./Cart";
 import Home from "./Home";
 
 function App(props) {
-  const {items,onUpdateToCart}=props
+  const {items,saveLocalStorage}=props
   const [Category, setCategory] = useState(0);
   const [isFiltering, setFiltering] = useState(false);
   const [Filtered, setFiltered] = useState(false);
@@ -30,14 +30,10 @@ function App(props) {
   };
 
   useEffect(() => {
-    // console.log(isFiltering);
-  });
+    saveLocalStorage(items);
+  },[items]);
 
  
-
-  const update = (item,quantity) =>{
-    // onUpdateToCart(item,quantity)
-  }
 
   return (
     <Fragment>
@@ -52,7 +48,7 @@ function App(props) {
             <Home
               category={Category}
               loadCategory={loadCategory}
-              updateCart={update}
+              // updateCart={update}
               list={list}
               isFiltering={isFiltering}
               filtered={Filtered}
