@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from "react"
 import React from 'react'
-// import updatecart
 import { removeFromCart, updateCart } from "../../lib/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 
 
@@ -123,51 +123,51 @@ export default function CartPage() {
         // console.log(items);
     },[items,subTotal,Total]);
     return (
-        <Fragment>
-            <div className="container mt-5">
-                <div className="row">
-                    <div className="col-sm cart">
-                        <Table items={items} />
-                    </div>
-                    <div className="col-sm-3 order-summary">
-                        <ul className="list-group">
-                            <li className="list-group-item">
-                                <h6>Order Summary</h6>
-                            </li>
-                            <li className="list-group-item">
-                                <ul className="list-group flex">
-                                    <li className="text-left">subtotal</li>
-                                    <li className="text-right">{subTotal}€</li>
-                                </ul>
-                                <ul className="list-group flex">
-                                    <li className="text-left">shipping</li>
-                                    <li className="text-right">{shipping}€</li>
-                                </ul>
-                                <ul className="list-group flex">
-                                    <li className="coupon crimson">
-                                        <small>add coupon code</small>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="list-group-item">
-                                <ul className="list-group flex">
-                                    <li className="text-left">total</li>
-                                    <li className="text-right">{subTotal === 0 ? "00" : Total}€</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <button
-                            className="btn btn-light btn-lg  bg-crimson  btn-block"
-                            type="button"
-                            // disabled={!items.length}
-                            disabled="true"
-                        >
-                            {/* <Link className="white">Checkout</Link> */}
-                            checkout
-                        </button>
-                    </div>
-                </div>
+      <Fragment>
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-sm cart">
+              <Table items={items} />
             </div>
-        </Fragment>
+            <div className="col-sm-3 order-summary">
+              <ul className="list-group">
+                <li className="list-group-item">
+                  <h6>Order Summary</h6>
+                </li>
+                <li className="list-group-item">
+                  <ul className="list-group flex">
+                    <li className="text-left">subtotal</li>
+                    <li className="text-right">{subTotal}€</li>
+                  </ul>
+                  <ul className="list-group flex">
+                    <li className="text-left">shipping</li>
+                    <li className="text-right">{shipping}€</li>
+                  </ul>
+                  <ul className="list-group flex">
+                    <li className="coupon crimson">
+                      <small>add coupon code</small>
+                    </li>
+                  </ul>
+                </li>
+                <li className="list-group-item">
+                  <ul className="list-group flex">
+                    <li className="text-left">total</li>
+                    <li className="text-right">
+                      {subTotal === 0 ? "00" : Total}€
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <button
+                type="button"
+                className="btn btn-danger btn-lg btn-block"
+                disabled={!items.length}
+              >
+                <Link to={"/checkout"}>Checkout</Link>
+              </button>
+            </div>
+          </div>
+        </div>
+      </Fragment>
     );
 }

@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import { list } from "../../data";
 import CartPage from "./Cart";
 import Home from "./Home";
+import Checkout from "./Checkout";
 
 function App(props) {
   const {items,saveLocalStorage}=props
@@ -58,6 +59,8 @@ function App(props) {
           }
         />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<Checkout />} />
+
       </Routes>
     </Fragment>
   );
