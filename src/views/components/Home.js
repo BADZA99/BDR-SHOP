@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SideMenu from '../../components/SideMenu';
 import List from '../../components/List';
-import { list } from '../../data';
+// import { list } from '../../data';
 
 
 export default function Home(props) {

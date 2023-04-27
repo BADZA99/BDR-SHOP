@@ -1,22 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import { Fragment } from 'react';
+import React, { useEffect, useState, useContext } from "react";
+import { UserProfileContext } from "../../lib/UserProfileContext";
+// import { Link } from 'react-router-dom';
+
 
 export default function Checkout() {
-    const [isValid,setValid]=useState(false)
-    const validate = ()=>{
-        let errors=[]
-        const inputs= document.querySelectorAll(".form-control")
+    const [isValid, setValid] = useState(false);
+    const value = useContext(UserProfileContext)
+    const {
+        firstName,
+        lastName,
+        email,
+        address,
+        zipCode,
+        city,
+        setUserProfileContext
+    } = value
+    const validate = () => {
+        let errors = []
+        const inputs = document.querySelectorAll(".form-control")
 
-        inputs.forEach(input=>{
-           !inputs.value ? errors.push(input) : errors.length && errors.pop()
+        inputs.forEach(input => {
+            !inputs.value ? errors.push(input) : errors.length && errors.pop()
         })
         // console.log(errors)
-        setValid(!errors.length); 
-        
+        setValid(!errors.length);
+
     }
-    useEffect(()=>{
-         validate()
+    useEffect(() => {
+        validate()
 
     })
     return (
@@ -32,13 +43,23 @@ export default function Checkout() {
                   type="text"
                   class="form-control"
                   placeholder="First name"
+                  defaultValue={firstName}
+                  name="firstName"
+                  onChange={(e) => {
+                    setUserProfileContext({ [e.target.name]: e.target.value });
+                  }}
                 />
               </div>
               <div class="col">
                 <input
                   type="text"
                   class="form-control"
+                  defaultValue={lastName}
+                  name="lastName"
                   placeholder="Last name"
+                  onChange={(e) => {
+                    setUserProfileContext({ [e.target.name]: e.target.value });
+                  }}
                 />
               </div>
             </div>
@@ -52,19 +73,15 @@ export default function Checkout() {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter email"
+                defaultValue={email}
+              name="email"
+              onChange={(e) => {
+                setUserProfileContext({ [e.target.name]: e.target.value });
+              }}
             />
             <small id="emailHelp" className="form-text text-muted">
               We'll never share your email with anyone else.
             </small>
-          </div>
-          <div className="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input
-              type="password"
-              className="form-control col-md-5"
-              id="exampleInputPassword1"
-              placeholder="Password"
-            />
           </div>
           <div className="form-group">
             <label for="exampleInputPassword1">Adress</label>
@@ -73,6 +90,11 @@ export default function Checkout() {
               className="form-control col-md-5"
               id="exampleInputPassword1"
               placeholder="Adress"
+              defaultValue={address}
+              name="address"
+              onChange={(e) => {
+                setUserProfileContext({ [e.target.name]: e.target.value });
+              }}
             />
           </div>
           <form action="">
@@ -82,17 +104,31 @@ export default function Checkout() {
                   type="text"
                   class="form-control"
                   placeholder="post code"
+                    defaultValue={zipCode}
+                  name="zipCode"
+                  onChange={(e) => {
+                    setUserProfileContext({ [e.target.name]: e.target.value });
+                  }}
                 />
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="city" />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="city"
+                 defaultValue={city}
+                  name="city"
+                  onChange={(e) => {
+                    setUserProfileContext({ [e.target.name]: e.target.value });
+                  }}
+                />
               </div>
             </div>
           </form>
           <button
             type="submit"
             className="btn btn-danger btn-lg btn-block mt-2"
-            disabled={!isValid && true}
+            // disabled={!isValid && true}
           >
             Checkout
           </button>
