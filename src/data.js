@@ -75,7 +75,7 @@ const gaming = [
   {
     ref: "gaming_10",
     category: "gaming",
-    name: "AC VALHALLA",
+    name: "VALHALLA",
     price: 20,
     unit: "piece",
     image: "./assets/gaming/AC valhalla.jpg",
