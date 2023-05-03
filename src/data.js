@@ -70,7 +70,7 @@ const gaming = [
     name: "mortal",
     price: 30,
     unit: "piece",
-    image: "./assets/gaming/mortal.jpg",
+    image: "./assets/gaming/Mortal.jpg",
   },
   {
     ref: "gaming_10",
@@ -91,10 +91,10 @@ const gaming = [
   {
     ref: "gaming_12",
     category: "gaming",
-    name: "WWE 2K23",
+    name: "Rocket",
     price: 5,
     unit: "piece",
-    image: "./assets/gaming/wwe23.jpg",
+    image: "./assets/gaming/Rocket.jpg",
   },
   {
     ref: "gaming_13",
